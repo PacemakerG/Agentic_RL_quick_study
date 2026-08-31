@@ -1,0 +1,21 @@
+[submodule "Week 1 - Transformer 基础恢复/CS336-A1-Basics"]
+	path = Week 1 - Transformer 基础恢复/CS336-A1-Basics
+	url = git@github.com:PacemakerG/Agent-.git
+[submodule "Week 1 - Transformer 基础恢复/CS336-A2-Systems"]
+	path = Week 1 - Transformer 基础恢复/CS336-A2-Systems
+	url = https://github.com/stanford-cs336/assignment2-systems.git
+[submodule "Week 2 - RL 数学基础 + PPO/CS285-Homework"]
+	path = Week 2 - RL 数学基础 + PPO/CS285-Homework
+	url = https://github.com/berkeleydeeprlcourse/homework_spring2026.git
+[submodule "Week 3 - LLM Post-training + GRPO/CS336-A5-Alignment"]
+	path = Week 3 - LLM Post-training + GRPO/CS336-A5-Alignment
+	url = https://github.com/stanford-cs336/assignment5-alignment.git
+[submodule "Week 4 - 真正跑 LLM RL/CS285-Homework"]
+	path = Week 4 - 真正跑 LLM RL/CS285-Homework
+	url = https://github.com/berkeleydeeprlcourse/homework_spring2026.git
+[submodule "Week 5 - Agentic RL/verl"]
+	path = Week 5 - Agentic RL/verl
+	url = https://github.com/verl-project/verl.git
+[submodule "Week 6 - DoctorAgent-RL + 面试收束/MedAgent-RL"]
+	path = Week 6 - DoctorAgent-RL + 面试收束/MedAgent-RL
+	url = https://github.com/PacemakerG/MedAgent-RL.git
