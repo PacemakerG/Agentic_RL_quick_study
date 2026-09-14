@@ -1,0 +1,532 @@
+[
+  {
+    "self_report": "I was under a lot of stress a few days ago and couldn't eat. My mood has improved a bit these days, but now I often feel unsatisfied after meals and get hungry easily. Could there be something wrong with my body? (Male, 22 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Hello, have you experienced any discomfort such as abdominal pain, diarrhea, or constipation?"
+        ],
+        "patient_response": [
+          "I had some diarrhea yesterday and today.",
+          "Other than that, nothing much, but I’m still feeling a bit stressed."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have you caught a cold or eaten anything unclean recently?"
+        ],
+        "patient_response": [
+          "No.",
+          "It’s just that I went from not being able to eat to suddenly eating a lot recently."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have you noticed any black stools or blood in your stool?"
+        ],
+        "patient_response": [
+          "No."
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms, it appears you are experiencing constipation.",
+    "recommendation": "During episodes of diarrhea, try to avoid cold, spicy, or irritating foods. It’s also helpful to include more vegetables in your daily diet. There’s no need to worry too much.",
+    "enhanced_description": "The patient, a 22-year-old male, reported initially being under significant stress a few days prior, which led to an inability to eat. His mood has since improved slightly, but he now experiences a persistent feeling of dissatisfaction after meals and frequently feels hungry. Additionally, he noted having diarrhea yesterday and again today, with no other notable symptoms. He also mentioned transitioning from not being able to eat to suddenly eating a lot recently. Based on his symptoms, it appears he is experiencing constipation. During episodes of diarrhea, it is recommended to avoid cold, spicy, or irritating foods and to increase vegetable intake. There is no need for excessive concern at this time.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "Hello doctor, here is my issue: poor digestion (female, 26 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Hello! What discomfort are you experiencing?"
+        ],
+        "patient_response": [
+          "My stomach keeps making gurgling noises.",
+          "It feels like my intestines are making noise.",
+          "It happens when I'm hungry and also after eating.",
+          "No other discomfort."
+        ]
+      },
+      {
+        "doctor_question": [
+          "How long has this been going on? How are your bowel movements? Do you have any medical history?"
+        ],
+        "patient_response": [
+          "It started in September. Sometimes it stops for a while but then comes back. I have mild constipation, going once every 2-3 days. Occasionally, my stool is not well-formed but not loose.",
+          "My digestion might not be great. Eating spicy barbecue food easily gives me diarrhea, but otherwise it's okay."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you usually experience bloating? Do you pass gas frequently?"
+        ],
+        "patient_response": [
+          "No bloating, but if I don’t go to the bathroom for three days, I pass more gas. After going, it gets better.",
+          "It gets better."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have you had any problems with previous tests?"
+        ],
+        "patient_response": [
+          "The doctor didn’t prescribe any medication for me."
+        ]
+      },
+      {
+        "doctor_question": [
+          "You're welcome."
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms, you likely have constipation, possibly due to intestinal dysregulation.",
+    "recommendation": "For constipation, I recommend increasing your intake of vegetables and fruits, drinking more water, and exercising regularly. Avoid spicy, greasy, and cold foods to help improve your digestion. If symptoms persist, consider taking Trimebutine and probiotics after consulting with your doctor.",
+    "enhanced_description": "Hello doctor, here is my issue: I am experiencing poor digestion, specifically characterized by gurgling noises from my stomach, which feels like my intestines are making noise. This occurs both when I am hungry and after eating, though there is no associated discomfort. The symptoms started in September and sometimes stop for a while but then return. I also have mild constipation, going once every 2-3 days, and occasionally my stool is not well-formed but not loose. Eating spicy barbecue food easily causes diarrhea, but otherwise, my digestion is manageable. No bloating is present, but if I do not go to the bathroom for three days, I pass more gas, and after going, the symptoms improve. The doctor did not prescribe any medication for me.\n\nBased on your symptoms, you likely have constipation, possibly due to intestinal dysregulation. To address this, I recommend increasing your intake of vegetables and fruits, drinking more water, and exercising regularly. Avoid spicy, greasy, and cold foods to help improve your digestion. If symptoms persist, consider taking Trimebutine and probiotics after consulting with your doctor.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "I always vomit acid in the middle of the night and cough frequently. (Male, 50 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Hello, how long has this been going on?"
+        ],
+        "patient_response": [
+          "It's been about half a month."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have you experienced any stomach discomfort before?"
+        ],
+        "patient_response": [
+          "When I had a gastroscopy earlier this year, I was diagnosed with superficial gastritis accompanied by bile reflux."
+        ]
+      },
+      {
+        "doctor_question": [
+          "These symptoms could be caused by reflux gastritis. Have you been taking any medication regularly?"
+        ],
+        "patient_response": [
+          "I took omeprazole and domperidone before, but I haven’t taken any medicine recently.",
+          "During my physical exam this year, I was told I have fatty liver. Could that be a factor?"
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms and medical history, you likely have gastritis.",
+    "recommendation": "I recommend continuing to take omeprazole and mosapride citrate to alleviate symptoms. Additionally, try not to overeat during meals and maintain a balanced diet to manage your fatty liver condition.",
+    "enhanced_description": "The patient, a 50-year-old male, reports vomiting acid in the middle of the night and frequent coughing. These symptoms have persisted for approximately half a month. He mentions that he was previously diagnosed with superficial gastritis accompanied by bile reflux after a gastroscopy earlier this year. He had been taking omeprazole and domperidone for these conditions but has not taken any medication recently. During his physical examination this year, he was informed that he has fatty liver. He wonders if this could be a contributing factor to his current symptoms. Based on his symptoms and medical history, he is likely experiencing ongoing gastritis. The recommended treatment includes continuing to take omeprazole and mosapride citrate to alleviate his symptoms. Additionally, he is advised to avoid overeating during meals and to maintain a balanced diet to manage his fatty liver condition.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "I've been constipated for the past 2 months, with bowel movements only about every 5 days. My stool is dry and granular—what should I do? (Male, 23)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Do you experience any abdominal pain or bloating? Have you undergone any tests?"
+        ],
+        "patient_response": [
+          "No abdominal pain or bloating."
+        ]
+      },
+      {
+        "doctor_question": [
+          "What are your usual dietary habits like? Do you engage in much physical activity?"
+        ],
+        "patient_response": [
+          "I was previously diagnosed with chronic gastritis and proctitis.",
+          "I don't move much—I mostly work at a desk."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Is there anything specific about when to eat apples or bananas before meals? I heard they can help with constipation."
+        ],
+        "patient_response": [
+          "5 days without a bowel movement—severe constipation. I feel bloated below the navel—is this due to unpassed stool?"
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms and history, you are experiencing constipation.",
+    "recommendation": "To improve your condition, I recommend increasing your water intake, incorporating more physical activity, and ensuring a diet rich in fiber. These lifestyle adjustments should help alleviate functional constipation. If symptoms persist, further evaluation may be needed.",
+    "enhanced_description": "The patient, a 23-year-old male, reports being constipated for the past two months, with bowel movements occurring only about every five days. His stool is described as dry and granular. He has no abdominal pain or bloating but notes that he feels bloated below the navel, which he suspects might be due to unpassed stool. The patient was previously diagnosed with chronic gastritis and proctitis. He leads a sedentary lifestyle, working primarily at a desk and not engaging in much physical activity.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "I have stomach pain and feel like vomiting (female, 26 years old).",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "How long have you been experiencing this?"
+        ],
+        "patient_response": [
+          "It happened once last month.",
+          "It hurt twice this month.",
+          "It hurt before the New Year. I went to the hospital for a check-up, but no issues were found."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have you eaten any unusual foods recently?"
+        ],
+        "patient_response": [
+          "No! But I haven’t been eating on time for about a year. Could that be a factor?"
+        ]
+      },
+      {
+        "doctor_question": [
+          "What tests did you have done?"
+        ],
+        "patient_response": [
+          "I only had an ultrasound.",
+          "I had surgery for cervical erosion before the New Year.",
+          "When it hurts, is it in one specific spot or all over the abdomen? What other tests do you think I should have?"
+        ]
+      },
+      {
+        "doctor_question": [
+          "You should have a gynecological ultrasound to check for fluid in the rectouterine pouch and whether there are signs of cervicitis."
+        ],
+        "patient_response": [
+          "Oh!",
+          "Thank you!"
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms and history, it is likely gastritis.",
+    "recommendation": "I recommend scheduling a gynecological ultrasound to rule out other possible conditions. Additionally, try to maintain regular meal times to prevent further stomach irritation.",
+    "enhanced_description": "The patient is a 26-year-old female who has experienced stomach pain and a sensation of nausea on multiple occasions. She reports that the pain initially occurred once last month and then again twice this month, with the most recent episode occurring before the New Year. The patient had previously visited the hospital for a check-up, where no significant issues were identified, and she underwent an ultrasound that did not reveal any problems. However, she mentions that she has not been eating on time for about a year, which could potentially contribute to her symptoms. The patient also disclosed that she had undergone surgery for cervical erosion around the same time as the most recent episode of pain. When asked about the location of the pain, the patient indicated that it is felt in one specific spot rather than throughout the entire abdomen. Based on her symptoms and history, it is likely that she is experiencing gastritis. To further investigate and rule out other possible conditions, the patient is recommended to schedule a gynecological ultrasound. Additionally, maintaining regular meal times is advised to prevent further stomach irritation.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "Dull pain above and to the right of the navel with gurgling sounds (female, 44 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "How long has this been going on?"
+        ],
+        "patient_response": [
+          "Over a week. I had an ultrasound yesterday, and nothing abnormal was found in the liver or gallbladder.",
+          "I crave all kinds of delicious food, but after eating, I feel bloated."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you experience nausea, vomiting, acid reflux, abdominal pain, or diarrhea?"
+        ],
+        "patient_response": [
+          "Especially oranges—I ate a segment yesterday morning and had diarrhea afterward."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you often stay up late?"
+        ],
+        "patient_response": [
+          "I’m not sure if it’s psychological, but my right back also feels sore and swollen.",
+          "I usually sleep around 11:00 PM."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you usually eat a lot of spicy or irritating foods?"
+        ],
+        "patient_response": [
+          "I enjoy them, but I’ve been eating very little recently. Today at lunch, I had a few bites of spicy sauerkraut fish.",
+          "What do you think might be the issue here?"
+        ]
+      },
+      {
+        "doctor_question": [
+          "You mentioned the pain is above and to the right of the navel, which is where the liver and gallbladder are located. But the intestines are also in that area.",
+          "Since you described it as a dull pain with gurgling sounds, it’s more likely to be an intestinal issue."
+        ],
+        "patient_response": [
+          "Oh, I see.",
+          "Do you think I should take some medication to regulate my stomach and intestines? Any recommendations?"
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms, you likely have gastritis and enteritis.",
+    "recommendation": "I recommend trying lansoprazole, itopride, and probiotics to help regulate your digestive system. Avoid spicy and irritating foods, and try to maintain a regular sleep schedule.",
+    "enhanced_description": "The patient is a 44-year-old female who has experienced a dull pain above and to the right of her navel for over a week, accompanied by gurgling sounds. She had an ultrasound yesterday, which did not reveal any abnormalities in the liver or gallbladder. The patient reports craving various types of food but feeling bloated after eating, particularly after consuming oranges, which led to diarrhea the previous morning. Additionally, she notes that her right back feels sore and swollen. She typically sleeps around 11:00 PM and has been eating very little recently. Today at lunch, she had a few bites of spicy sauerkraut fish. Based on these symptoms, the patient likely has gastritis and enteritis. To address her condition, the recommendation is to try lansoprazole, itopride, and probiotics to help regulate her digestive system. She should also avoid spicy and irritating foods and maintain a regular sleep schedule.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "Good physical condition, occasional stomach pain, no diarrhea, no constipation, mainly excessive flatulence (female, 17 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Hello! Specifically, which part of your stomach hurts? Use the navel as a reference point."
+        ],
+        "patient_response": [
+          "Below the navel."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Is it hurting now?"
+        ],
+        "patient_response": [
+          "Um, actually, it's the part above the navel.",
+          "Not often, it's rare. Right now, because I haven’t eaten breakfast, I feel a little uncomfortable."
+        ]
+      },
+      {
+        "doctor_question": [
+          "One moment, please. Do you usually have regular eating habits? Do you overeat? Do you consume a lot of spicy, cold, greasy, or stimulating foods like coffee, alcohol, or strong tea?"
+        ],
+        "patient_response": [
+          "At school, my diet is quite regular, but at home, it’s not as structured. I do overeat a little, like snacking—once I start, I eat a lot. I prefer strong flavors and enjoy spicy food but not extremely spicy. In summer, I like cold foods, but rarely in winter. My diet is generally greasy, though I rarely eat grilled foods. I used to drink coffee for a while, but it’s been a long time since I had any. I don’t drink alcohol or strong tea. I like carbonated drinks but haven’t had them much recently, though I drink more in summer."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have you had a physical exam before? Any medical history?"
+        ],
+        "patient_response": [
+          "No.",
+          "No medical history."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Is urination normal? Are you sexually active?"
+        ],
+        "patient_response": [
+          "Urination is normal, and I’m not sexually active."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Okay, any other discomfort?"
+        ],
+        "patient_response": [
+          "No."
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms—occasional abdominal pain, excessive flatulence, and irregular eating habits—I suspect gastrointestinal dysfunction.",
+    "recommendation": "You may try taking Dalicate and Golden Bifid to see if they help. Dalicate should be taken 1-2 hours after meals, while Golden Bifid can be taken right after meals. I recommend purchasing both—one box of Dalicate should suffice. Golden Bifid can be taken for 1-2 weeks to regulate bowel function. If it works well, you may continue for a while longer.",
+    "enhanced_description": "The patient is a 17-year-old female who reports occasional abdominal discomfort primarily located above the navel. She experiences this discomfort infrequently, particularly when she has not eaten breakfast. Her diet is generally irregular, with a tendency to overeat, especially at home where her eating habits are less structured. She prefers strong flavors and enjoys spicy food, although she avoids extremely spicy dishes. Her diet is typically greasy, but she rarely consumes grilled foods. She used to drink coffee but has not consumed it in a long time. She does not consume alcohol or strong tea and prefers carbonated drinks, which she has not had much of recently, except during the summer months. She denies any history of diarrhea, constipation, or other gastrointestinal issues. She has no significant medical history and is not sexually active. Urination is normal. The patient suspects that her symptoms may be related to her dietary habits and seeks advice on managing her gastrointestinal discomfort.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "Hello, I've been having difficulty going to the bathroom recently, and I feel like my digestion isn't great either. What could be the reason? (Male, 25 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Hello. How long has this been going on? Are there any other symptoms you'd like to add?"
+        ],
+        "patient_response": [
+          "It's been on and off for about two years."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you experience acid reflux, belching, nausea, or bloating?"
+        ],
+        "patient_response": [
+          "No, just difficulty with bowel movements."
+        ]
+      },
+      {
+        "doctor_question": [
+          "It’s best to schedule a colonoscopy when you have time."
+        ],
+        "patient_response": [
+          "Okay, thank you."
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms, it appears you may be experiencing constipation.",
+    "recommendation": "I recommend increasing your intake of vegetables and fruits while reducing oily foods. Regular exercise can also help improve bowel motility. If symptoms persist, consider scheduling a colonoscopy for further evaluation.",
+    "enhanced_description": "The patient, a 25-year-old male, has experienced difficulty with bowel movements and overall poor digestion for approximately two years. He reports no other specific symptoms and notes that these issues have been intermittent. Based on his symptoms, he may be experiencing constipation. To address this, it is recommended to increase his intake of vegetables and fruits while reducing oily foods. Regular exercise can also help improve bowel motility. If symptoms persist, a colonoscopy may be considered for further evaluation. Medical evidence supports that dietary changes and increased physical activity can alleviate constipation by promoting regular bowel movements and improving gut health.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "Hello doctor, I have gastric acid and sometimes acid reflux. What should I do? (Male, 26 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Hello, what discomfort are you experiencing?"
+        ],
+        "patient_response": [
+          "Gastric acid.",
+          "I feel acid reflux.",
+          "Sometimes it feels like it's coming up to my throat."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you feel heartburn? How long has this been going on?"
+        ],
+        "patient_response": [
+          "Yes, exactly.",
+          "Just about four or five days."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Did you not have this before?"
+        ],
+        "patient_response": [
+          "No, I didn’t have it before."
+        ]
+      },
+      {
+        "doctor_question": [
+          "This is related to eating. For example, do you experience acid reflux after meals or regardless of eating?"
+        ],
+        "patient_response": [
+          "I feel like it goes away after eating, but it’s very noticeable when I’m hungry."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Do you have chest pain, chest tightness, or coughing?"
+        ],
+        "patient_response": [
+          "No chest pain, but I do cough sometimes, and my throat feels very itchy."
+        ]
+      },
+      {
+        "doctor_question": [
+          "How are your bowel movements? Do you have abdominal pain, fever, or palpitations?"
+        ],
+        "patient_response": [
+          "My stools are always thin and unformed.",
+          "No fever.",
+          "No palpitations either.",
+          "No abdominal pain.",
+          "Sometimes I feel constipated, can’t pass stool, and it’s still thin and unformed."
+        ]
+      },
+      {
+        "doctor_question": [
+          "What about the color of your stool?"
+        ],
+        "patient_response": [
+          "Yellow, occasionally black."
+        ]
+      },
+      {
+        "doctor_question": [
+          "How dark is the black color? What does it resemble?"
+        ],
+        "patient_response": [
+          "It’s more like a dark green, somewhat like ink green."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Is the acid reflux worse during the day or at night, or about the same?"
+        ],
+        "patient_response": [
+          "At night.",
+          "It’s worse."
+        ]
+      },
+      {
+        "doctor_question": [
+          "If symptoms don’t improve, I recommend getting a gastroscopy for further evaluation."
+        ],
+        "patient_response": [
+          "Okay."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Hello patient, online consultations can only serve as treatment suggestions. If your condition doesn’t improve within 3 days, please seek medical attention promptly to avoid delaying treatment."
+        ],
+        "patient_response": [
+          "Got it! Thank you."
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms, you may be experiencing constipation.",
+    "recommendation": "I recommend avoiding strong tea and coffee, and not lying down immediately after meals. Elevating your pillow slightly at night may also help. Try adjusting your lifestyle habits for three days and monitor any changes.",
+    "enhanced_description": "The patient is a 26-year-old male who reports experiencing gastric acid and acid reflux. He describes the acid reflux as a sensation where the acid feels like it is coming up to his throat, which is particularly noticeable when he is hungry. The symptoms have been present for about four to five days and did not occur prior to this period. The patient notes that the symptoms tend to subside after eating, but are more pronounced when he is hungry. He does not experience chest pain, but mentions occasional coughing and an itchy throat. His stools are typically thin and unformed, and he occasionally passes dark green, almost ink-like stools, especially at night. He does not report any fever or palpitations, nor does he experience abdominal pain. Additionally, he sometimes feels constipated, with difficulty passing stool that remains thin and unformed. \n\nBased on the diagnosis of constipation, the recommendation is to avoid strong tea and coffee, refrain from lying down immediately after meals, and elevate the pillow slightly at night. These adjustments are suggested to be followed for three days while monitoring any changes.",
+    "category": "Digestive System Diseases"
+  },
+  {
+    "self_report": "26-year-old female. I've been experiencing intermittent dull pain behind the sternum for over a month. I feel like food and water slowly pass through the esophagus to the stomach, and I can sense where the food is. I burp easily. I don't want to eat hard or spicy foods, and I've lost weight. I had an endoscopy 1 year and 9 months ago, which showed chronic superficial gastritis with antral erosion, and the esophagus was normal. Doctor, what could be the reason? Is it serious? (Female, 26 years old)",
+    "dialogue": [
+      {
+        "doctor_question": [
+          "Do you experience belching, acid reflux, or abdominal bloating? How much weight have you lost? How is your appetite?"
+        ],
+        "patient_response": [
+          "I've lost 5 pounds in a month.",
+          "My appetite is poor.",
+          "I also had a laryngoscopy 3 months ago, which showed chronic pharyngitis.",
+          "No acid reflux.",
+          "No abdominal bloating."
+        ]
+      },
+      {
+        "doctor_question": [
+          "You've described it very thoroughly. Have you taken any medications?"
+        ],
+        "patient_response": [
+          "I took Mosapride, Lansoprazole, and Sucralfate Suspension Gel for three days.",
+          "Previously, I had sounds like firecrackers in my stomach, but it's improved these past two days. However, I still have dull chest pain. I get very worried even with minor discomfort and have trouble sleeping at night."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Have the symptoms improved with the medication? Currently, we suspect gastroesophageal reflux, esophageal motility disorder, and cardia dysfunction leading to acid reflux into the esophagus and causing symptoms."
+        ],
+        "patient_response": [
+          "There hasn't been significant improvement; the symptoms persist."
+        ]
+      },
+      {
+        "doctor_question": [
+          "How long should I take the medication for one course of treatment?"
+        ],
+        "patient_response": [
+          "4 to 6 weeks."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Should I get an endoscopy or something?"
+        ],
+        "patient_response": [
+          "No need."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Can I drink milk and eat oatmeal?"
+        ],
+        "patient_response": [
+          "Milk can cause bloating, so don't consume too much."
+        ]
+      },
+      {
+        "doctor_question": [
+          "My habit is to drink 200ml of milk every morning when I wake up. Is that okay?"
+        ],
+        "patient_response": [
+          "Yes, drink it slowly, don't rush. Maintain a light and easily digestible diet, avoid spicy and greasy foods, quit smoking and alcohol, eat until 70-80% full, take a light walk after meals, avoid prolonged sitting, exercise moderately, and supplement with fresh vegetables, fruits, and yogurt."
+        ]
+      },
+      {
+        "doctor_question": [
+          "Okay, thank you, doctor.",
+          "You've answered very thoroughly. Thank you so much."
+        ],
+        "patient_response": [
+          "You're welcome."
+        ]
+      }
+    ],
+    "diagnosis": "Based on your symptoms and medical history, the diagnosis is gastritis.",
+    "recommendation": "I recommend continuing the prescribed medications for 4 to 6 weeks. Maintain a light, easily digestible diet, avoid spicy and greasy foods, quit smoking and alcohol, eat moderately, stay active, and incorporate fresh vegetables, fruits, and yogurt into your diet. If symptoms persist, further evaluation may be needed.",
+    "enhanced_description": "The patient is a 26-year-old female who has been experiencing intermittent dull pain behind the sternum for over a month. She reports that food and water seem to pass slowly through her esophagus to the stomach, and she can sense where the food is. She burps easily and avoids hard or spicy foods due to discomfort. In the past month, she has lost 5 pounds and notes a poor appetite. She had an endoscopy 1 year and 9 months ago, which showed chronic superficial gastritis with antral erosion, and the esophagus was normal. Additionally, she had a laryngoscopy 3 months ago, which revealed chronic pharyngitis. She has not experienced acid reflux or abdominal bloating. She took Mosapride, Lansoprazole, and Sucralfate Suspension Gel for three days, but there has been no significant improvement. Previously, she had sounds like firecrackers in her stomach, but this has improved over the past two days. Despite the improvement, she still experiences dull chest pain and becomes very worried with minor discomfort, leading to difficulty sleeping at night. The symptoms have persisted for 4 to 6 weeks. Milk causes bloating, so she avoids consuming it excessively. She is advised to drink milk slowly and maintain a light and easily digestible diet, avoiding spicy and greasy foods, quitting smoking and alcohol, eating until 70-80% full, taking a light walk after meals, avoiding prolonged sitting, exercising moderately, and incorporating fresh vegetables, fruits, and yogurt into her diet. The diagnosis is gastritis, and she is recommended to continue the prescribed medications for 4 to 6 weeks. Medical evidence supports the persistence of gastritis symptoms, including the chronic superficial gastritis with antral erosion noted in her previous endoscopy.",
+    "category": "Digestive System Diseases"
+  }
+]

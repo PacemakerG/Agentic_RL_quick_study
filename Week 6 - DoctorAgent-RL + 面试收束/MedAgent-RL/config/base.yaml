@@ -1,0 +1,60 @@
+rl_or_sft: "rl"
+
+system:
+  cuda_visible_devices: "0,1,2,3,4,5,6,7"
+  n_gpus: 8
+  vllm_attention_backend: "XFORMERS"
+  hydra_output_subdir: "outputs/exp_configs/logs/$(date +%Y-%m-%d)/$(date +%H-%M-%S)"
+
+model:
+  base_model: "Qwen2.5-7B-Instruct"
+  experiment_name: "medagent-rl-grpo-8x24gb"
+  gradient_checkpointing: true
+
+training:
+  train_data_num: null
+  val_data_num: 32
+  train_batch_size: 8
+  val_batch_size: 8
+  micro_batch_size: 8
+  ppo_batch_size: 8
+  max_start_length: 512
+  max_response_length: 256
+  max_obs_length: 256
+  max_turns: 10
+  rollout_tp_size: 4
+  n_rollout: 8
+  total_epochs: 1
+  total_training_steps: null
+  temperature: 0.7
+  no_think_rl: false
+  state_masking: true
+  ref_update_steps: null
+
+optimization:
+  actor_lr: 1.0e-6
+  critic_lr: 1.0e-5
+  use_kl_loss: false
+  kl_coef: 0.0
+  kl_type: low_var_kl
+  adv_estimator: grpo
+  gpu_memory_utilization: 0.25
+  no_ref_policy: true
+  betas: [0.9, 0.95]
+  reward_norm_type: grpo
+
+logging:
+  mode: "['console','wandb']"
+  log_images: true
+  log_image_dir: "log/trajectory"
+  log_image_step_size: 10
+  log_n_image_per_batch: 8
+
+trainer:
+  val_before_train: true
+  val_only: false
+  default_hdfs_dir: null
+  nnodes: 1
+  save_freq: 10
+  test_freq: 10
+  project_name: "MedAgent-RL"

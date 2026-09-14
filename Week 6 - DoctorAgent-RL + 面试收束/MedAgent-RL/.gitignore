@@ -1,0 +1,31 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+
+# Generated datasets; keep only documentation and small samples.
+data/*
+!data/README.md
+!data/samples/
+!data/samples/**
+
+# Model and training artifacts.
+checkpoints/
+outputs/
+log/
+logs/
+wandb/
+*.log
+*.ckpt
+*.safetensors
+
+# Editor and build artifacts.
+.idea/
+.vscode/
+build/
+dist/
+*.egg-info/

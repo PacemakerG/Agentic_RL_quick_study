@@ -1,0 +1,1038 @@
+[
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Below the ribs, close to the side.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The pain is localized below the ribs near the side. To assess the pattern, I should inquire about the timing of the pain during the day. </think>\n<answer>Question: During the day, when is the pain worse?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Below the ribs, close to the side.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is localized below the ribs near the side. To assess the pattern, I should inquire about the timing of the pain during the day. </think>\n<answer>Question: During the day, when is the pain worse?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "In the morning, and now it also hurts when pressed at night. When not pressed, it feels stuffy.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The pain is worse in the morning and at night when pressed, with a stuffy feeling otherwise. I should check if eating exacerbates the symptoms, as this could indicate gastrointestinal involvement. </think>\n<answer>Question: I see. Does it get worse after eating?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Below the ribs, close to the side.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is localized below the ribs near the side. To assess the pattern, I should inquire about the timing of the pain during the day. </think>\n<answer>Question: During the day, when is the pain worse?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "In the morning, and now it also hurts when pressed at night. When not pressed, it feels stuffy.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is worse in the morning and at night when pressed, with a stuffy feeling otherwise. I should check if eating exacerbates the symptoms, as this could indicate gastrointestinal involvement. </think>\n<answer>Question: I see. Does it get worse after eating?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Yes. But not particularly noticeable.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The patient reports mild worsening of pain after eating. To rule out other conditions, I should ask if any diagnostic tests have been performed. </think>\n<answer>Question: Have you had any tests done?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Below the ribs, close to the side.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is localized below the ribs near the side. To assess the pattern, I should inquire about the timing of the pain during the day. </think>\n<answer>Question: During the day, when is the pain worse?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "In the morning, and now it also hurts when pressed at night. When not pressed, it feels stuffy.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is worse in the morning and at night when pressed, with a stuffy feeling otherwise. I should check if eating exacerbates the symptoms, as this could indicate gastrointestinal involvement. </think>\n<answer>Question: I see. Does it get worse after eating?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Yes. But not particularly noticeable.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports mild worsening of pain after eating. To rule out other conditions, I should ask if any diagnostic tests have been performed. </think>\n<answer>Question: Have you had any tests done?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "No.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> No tests have been done. I should check if the patient has tried any medications to manage the symptoms. </think>\n<answer>Question: Have you taken any medication?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Below the ribs, close to the side.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is localized below the ribs near the side. To assess the pattern, I should inquire about the timing of the pain during the day. </think>\n<answer>Question: During the day, when is the pain worse?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "In the morning, and now it also hurts when pressed at night. When not pressed, it feels stuffy.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is worse in the morning and at night when pressed, with a stuffy feeling otherwise. I should check if eating exacerbates the symptoms, as this could indicate gastrointestinal involvement. </think>\n<answer>Question: I see. Does it get worse after eating?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Yes. But not particularly noticeable.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports mild worsening of pain after eating. To rule out other conditions, I should ask if any diagnostic tests have been performed. </think>\n<answer>Question: Have you had any tests done?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "No.",
+        "role": "user"
+      },
+      {
+        "content": "<think> No tests have been done. I should check if the patient has tried any medications to manage the symptoms. </think>\n<answer>Question: Have you taken any medication?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "No.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The patient hasn't taken any medication. To confirm the bilateral nature of the pain, I should ask if both sides are affected. </think>\n<answer>Question: Does it hurt below both the left and right ribs?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: The abdomen hurts when pressed. Previously, it hurt on the right side when sleeping on the right, and now it hurts on the left side when sleeping on the left (male, 32 years old).\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports abdominal pain that shifts sides depending on sleeping position. To better understand the condition, I need to gather more details about the duration and exact location of the pain. </think>\n<answer>Question: How long has this been going on? Where exactly is the pain located?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "About two months.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient mentions the pain has lasted two months. Now, I need to clarify the specific area of the pain to narrow down potential causes. </think>\n<answer>Question: Hmm. Which area?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Below the ribs, close to the side.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is localized below the ribs near the side. To assess the pattern, I should inquire about the timing of the pain during the day. </think>\n<answer>Question: During the day, when is the pain worse?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "In the morning, and now it also hurts when pressed at night. When not pressed, it feels stuffy.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The pain is worse in the morning and at night when pressed, with a stuffy feeling otherwise. I should check if eating exacerbates the symptoms, as this could indicate gastrointestinal involvement. </think>\n<answer>Question: I see. Does it get worse after eating?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Yes. But not particularly noticeable.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports mild worsening of pain after eating. To rule out other conditions, I should ask if any diagnostic tests have been performed. </think>\n<answer>Question: Have you had any tests done?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "No.",
+        "role": "user"
+      },
+      {
+        "content": "<think> No tests have been done. I should check if the patient has tried any medications to manage the symptoms. </think>\n<answer>Question: Have you taken any medication?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "No.",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient hasn't taken any medication. To confirm the bilateral nature of the pain, I should ask if both sides are affected. </think>\n<answer>Question: Does it hurt below both the left and right ribs?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Yes, near the side. Normally it feels stuffy, but it hurts when pressed. Only one side hurts.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms, it is likely gastritis.",
+        "recommendation": "I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "How long has this been going on? Where exactly is the pain located?"
+          ],
+          "patient_response": [
+            "About two months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Hmm. Which area?"
+          ],
+          "patient_response": [
+            "Below the ribs, close to the side."
+          ]
+        },
+        {
+          "doctor_question": [
+            "During the day, when is the pain worse?"
+          ],
+          "patient_response": [
+            "In the morning, and now it also hurts when pressed at night.",
+            "When not pressed, it feels stuffy."
+          ]
+        },
+        {
+          "doctor_question": [
+            "I see. Does it get worse after eating?"
+          ],
+          "patient_response": [
+            "Yes.",
+            "But not particularly noticeable."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had any tests done?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you taken any medication?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Does it hurt below both the left and right ribs?"
+          ],
+          "patient_response": [
+            "Yes, near the side. Normally it feels stuffy, but it hurts when pressed.",
+            "Only one side hurts."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 3
+    },
+    "response": "<think> The patient describes bilateral discomfort with pain on one side when pressed. Given the chronic nature, location, and relation to eating, gastritis is a likely diagnosis. A proton pump inhibitor and dietary modifications are recommended. </think>\n<answer>Diagnosis: Based on your symptoms, it is likely gastritis.\nRecommendation: I recommend taking omeprazole twice daily, one pill each time, for one week. If there’s no improvement, please visit the hospital for further examination. Additionally, avoid spicy and greasy foods and limit alcohol consumption to aid recovery.</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: Difficulty in bowel movements with sticky, greenish stool (male, 34 years old)\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms and history, the diagnosis is enteritis.",
+        "recommendation": "To manage your condition, I recommend the following: 1) Consider a colonoscopy for further evaluation. 2) Take Bifico orally and apply Mayinglong hemorrhoid ointment as needed. 3) Maintain a diet of easily digestible, high-fiber foods and stay hydrated. 4) Engage in light physical activity. If symptoms persist or worsen, seek further medical attention."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "Hello, how long has this been going on?"
+          ],
+          "patient_response": [
+            "Six months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Do you have abdominal pain or bloating? Have you experienced weight loss? Has there been any change in the frequency or shape of your stool?"
+          ],
+          "patient_response": [
+            "My stool has always been loose, no bloating or abdominal pain, and no weight loss."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Do you have any pre-existing conditions? Do you have hemorrhoids? Any drug allergies?"
+          ],
+          "patient_response": [
+            "I have hemorrhoids and colitis, but no drug allergies."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had a colonoscopy?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Was the colitis diagnosed by a doctor, or...?"
+          ],
+          "patient_response": [
+            "I saw a doctor who said it was anal eczema.",
+            "The enteritis was mentioned by a doctor a long time ago."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 1
+    },
+    "response": "<think> The patient reports difficulty in bowel movements with sticky, greenish stool. To better understand the condition, I need to know the duration of these symptoms. </think>\n<answer>Question: Hello, how long has this been going on?</answer>"
+  },
+  {
+    "data_source": "medical_consultation",
+    "prompt": [
+      {
+        "content": "You are an experienced doctor who needs to provide professional diagnosis and advice to patients through consultation. Please listen carefully to the patient's description, ask targeted questions, and collect sufficient information before giving a diagnosis and treatment recommendation.\n\nQuick Guide\nObjectives:\n1. Obtain key information through effective questioning, each round of questions should be modified based on the previous round's content, meaning you shouldn't ask similar questions.\n2. Comprehensively analyze the patient's condition to provide an accurate diagnosis and appropriate treatment recommendations.\n\nRules:\n1. You can only choose one of the options to respond, you cannot both answer questions and provide a diagnosis simultaneously.\n2. Absolutely do not repeat or ask questions similar or identical to those previously asked.\n\nResponse:\n<think> [your thinking] </think>\n<answer>If you believe there is insufficient information, please only ask one question, in this format:\nQuestion: (your question).\n</answer> | <answer>If you believe you have obtained enough information, please only provide diagnosis and recommendations, in this format:\nDiagnosis: (the patient's most likely disease or symptoms)\nRecommendation: (corresponding treatment plan or advice)\n</answer>\n",
+        "role": "system"
+      },
+      {
+        "content": "Patient's description: Difficulty in bowel movements with sticky, greenish stool (male, 34 years old)\nDecide next action:\nAlways output: <think> [your thinking] </think> <answer> [your response] </answer> No additional text. Strictly follow this format.\n",
+        "role": "user"
+      },
+      {
+        "content": "<think> The patient reports difficulty in bowel movements with sticky, greenish stool. To better understand the condition, I need to know the duration of these symptoms. </think>\n<answer>Question: Hello, how long has this been going on?</answer>",
+        "role": "assistant"
+      },
+      {
+        "content": "Six months.",
+        "role": "user"
+      }
+    ],
+    "reward_model": {
+      "ground_truth": {
+        "diagnosis": "Based on your symptoms and history, the diagnosis is enteritis.",
+        "recommendation": "To manage your condition, I recommend the following: 1) Consider a colonoscopy for further evaluation. 2) Take Bifico orally and apply Mayinglong hemorrhoid ointment as needed. 3) Maintain a diet of easily digestible, high-fiber foods and stay hydrated. 4) Engage in light physical activity. If symptoms persist or worsen, seek further medical attention."
+      },
+      "patient_information": [
+        {
+          "doctor_question": [
+            "Hello, how long has this been going on?"
+          ],
+          "patient_response": [
+            "Six months."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Do you have abdominal pain or bloating? Have you experienced weight loss? Has there been any change in the frequency or shape of your stool?"
+          ],
+          "patient_response": [
+            "My stool has always been loose, no bloating or abdominal pain, and no weight loss."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Do you have any pre-existing conditions? Do you have hemorrhoids? Any drug allergies?"
+          ],
+          "patient_response": [
+            "I have hemorrhoids and colitis, but no drug allergies."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Have you had a colonoscopy?"
+          ],
+          "patient_response": [
+            "No."
+          ]
+        },
+        {
+          "doctor_question": [
+            "Was the colitis diagnosed by a doctor, or...?"
+          ],
+          "patient_response": [
+            "I saw a doctor who said it was anal eczema.",
+            "The enteritis was mentioned by a doctor a long time ago."
+          ]
+        }
+      ]
+    },
+    "extra_info": {
+      "index": 1
+    },
+    "response": "<think> The symptoms have persisted for six months. Now, I need to assess if there are any accompanying symptoms such as abdominal pain, bloating, or weight loss, and any changes in stool frequency or shape. </think>\n<answer>Question: Do you have abdominal pain or bloating? Have you experienced weight loss? Has there been any change in the frequency or shape of your stool?</answer>"
+  }
+]

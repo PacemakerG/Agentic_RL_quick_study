@@ -1,0 +1,58 @@
+env:
+  name: "medical_consultation_patient_llm_rm"
+  use_env_llm: true
+  train_path: "data/MTMedDialog_RL.parquet"
+  val_path: "data/MTMedDialog_RL.parquet"
+  env_kwargs:
+    max_turns: -1
+  env_llm:
+    fsdp_config:
+      fsdp_size: -1
+      model_dtype: "bf16"
+      param_offload: false
+      mixed_precision:
+        param_dtype: "bf16"
+        reduce_dtype: "fp32"
+        buffer_dtype: "fp32"
+      wrap_policy: null
+    vllm_config:
+      tensor_parallel_size: 4
+      gpu_memory_utilization: 0.15
+      max_num_batched_tokens: 4096
+      max_num_seqs: 64
+    model:
+      path: "Qwen2.5-7B-Instruct"
+      trust_remote_code: true
+      use_liger: false
+      override_config:
+        max_position_embeddings: 4000
+        use_cache: true
+    ulysses_sequence_parallel_size: 1
+    generation:
+      prompt_length: 2272
+      response_length: 128
+      max_model_len: 2400
+      temperature: 0.01
+      top_p: 1.0
+      top_k: -1
+      repetition_penalty: 1.0
+      do_sample: false
+      num_beams: 1
+      best_of: 1
+      min_p: 0.0
+      n: 1
+      use_cache: true
+      use_beam_search: false
+      detokenize: false
+      ignore_eos: false
+      free_cache_engine: true
+      prompt_logprobs: null
+      generation_logprobs: 0
+      disable_log_stats: true
+      dtype: bfloat16
+      enforce_eager: true
+      enable_chunked_prefill: true
+      tensor_model_parallel_size: 4
+      gpu_memory_utilization: 0.15
+      max_tokens_per_batch: 4096
+      load_format: dummy_dtensor
