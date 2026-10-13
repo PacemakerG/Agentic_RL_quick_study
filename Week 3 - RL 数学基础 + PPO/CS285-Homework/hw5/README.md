@@ -1,30 +1,28 @@
-# Homework 5: Offline RL
+# 作业 5：离线强化学习（Offline RL）
 
-## Setup
+## 环境配置
 
-For general setup and Modal instructions, see Homework 1's README.
+有关通用的环境安装与 Modal 云端使用说明，请参阅 [作业 1 的 README](../hw1/README.md)。
 
-## Examples
+## 运行示例
 
-Here are some example commands. Run them in the `hw5` directory.
+以下是常用运行命令示例。请在 `hw5` 目录下运行：
 
-* To run on a local machine:
+* **在本地计算机上运行：**
   ```bash
   uv run src/scripts/run.py --run_group=q1 --base_config=sacbc --env_name=cube-single-play-singletask-task1-v0 --seed=0
   ```
 
-
-* To run on Modal:
+* **在 Modal 云端运行：**
   ```bash
   uv run modal run src/scripts/modal_run.py --run_group=q1 --base_config=sacbc --env_name=cube-single-play-singletask-task1-v0 --seed=0
   ```
-  * You may request a different GPU type, CPU count, and memory size by changing variables in `src/scripts/modal_run.py`
-  * Use `modal run --detach` to keep your job running in the background.
-  * Re-running the same command will resume from the latest checkpoint in `exp/` if the job was preempted.
-  * Use different seeds or explicitly set `exp_name` if you want to force a separate fresh run with the same arguments.
+  * 你可以通过修改 `src/scripts/modal_run.py` 中的变量来请求不同的 GPU 类型、CPU 核心数与内存大小。
+  * 使用 `modal run --detach` 可以让训练任务在后台持续运行。
+  * 如果任务被抢占中断，重新运行相同命令将从 `exp/` 中的最新检查点自动恢复。
+  * 如果想使用相同参数强制启动全新运行，请使用不同的随机种子（seed）或显式指定 `exp_name`。
 
-
-* To run 4 jobs on a single GPU in parallel on Modal:
+* **在 Modal 上单卡并行运行 4 个任务：**
   ```bash
   uv run modal run src/scripts/modal_run.py --njobs=4 \
   "JOB --run_group=q1 --base_config=sacbc --env_name=cube-single-play-singletask-task1-v0 --seed=0 --alpha=30" \
@@ -33,7 +31,7 @@ Here are some example commands. Run them in the `hw5` directory.
   "JOB --run_group=q1 --base_config=sacbc --env_name=cube-single-play-singletask-task1-v0 --seed=3 --alpha=1000"
   ```
 
-* To download logs and checkpoints from Modal:
+* **从 Modal 下载日志与检查点：**
   ```bash
   mkdir -p exp
   uv run modal volume get hw5-offline-rl-volume / exp

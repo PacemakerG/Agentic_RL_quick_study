@@ -1,10 +1,10 @@
-# CS285 HW3: Q-Learning and Actor-Critic Algorithms
+# CS285 作业 3：Q-Learning 与 Actor-Critic 算法
 
-This assignment covers Deep Q-Networks (DQN) for discrete action spaces and Soft Actor-Critic (SAC) for continuous action spaces.
+本次作业涵盖用于离散动作空间的 **深度 Q 网络（DQN）**，以及用于连续动作空间的 **软行动者-评论家算法（Soft Actor-Critic, SAC）**。
 
-## Prerequisites
+## 前置环境要求
 
-This assignment requires **Python 3.10** and the `swig` system package (needed by `gym[box2d]`).
+本次作业需要 **Python 3.10** 和系统级依赖包 `swig`（`gym[box2d]` 所必需）。
 
 **Linux (Ubuntu/Debian):**
 ```bash
@@ -16,73 +16,73 @@ sudo apt-get install swig
 brew install swig
 ```
 
-If you are unable to install `swig` or run into other environment issues, you can run all experiments on cloud GPUs using Modal (see the Modal section below).
+如果你无法在本地安装 `swig` 或遇到其他环境问题，可以使用 Modal 直接在云端 GPU 运行所有实验（参见下文 Modal 章节）。
 
-## Setup
+## 环境安装
 
-Install dependencies using uv:
+使用 `uv` 一键安装依赖并同步环境：
 
 ```bash
 uv sync
 ```
 
-## Running Experiments
+## 运行实验
 
-### DQN
+### 1. DQN 实验（离散动作空间）
 
 ```bash
-# CartPole (debug)
+# CartPole（调试与冒烟测试）
 uv run src/scripts/run_dqn.py -cfg experiments/dqn/cartpole.yaml
 
-# LunarLander (Double-DQN)
+# LunarLander（Double-DQN）
 uv run src/scripts/run_dqn.py -cfg experiments/dqn/lunarlander.yaml --seed 1
 
-# MsPacman
+# MsPacman（雅达利游戏环境）
 uv run src/scripts/run_dqn.py -cfg experiments/dqn/mspacman.yaml
 ```
 
-### SAC
+### 2. SAC 实验（连续动作空间）
 
 ```bash
-# InvertedPendulum (sanity check)
+# InvertedPendulum（完整性检查）
 uv run src/scripts/run_sac.py -cfg experiments/sac/sanity_invertedpendulum.yaml
 
-# HalfCheetah
+# HalfCheetah（标准连续控制基准）
 uv run src/scripts/run_sac.py -cfg experiments/sac/halfcheetah.yaml
 
-# Hopper with different Q-backup strategies
+# Hopper（测试不同 Q-backup 备份策略）
 uv run src/scripts/run_sac.py -cfg experiments/sac/hopper_clipq.yaml
 ```
 
-### Modal (Cloud Compute)
+### 3. Modal（云端计算，可选）
 
-First, authenticate with Modal:
+首先完成 Modal 身份认证：
 ```bash
 uv run modal token new
 ```
 
-Then launch experiments remotely:
+远程提交实验任务：
 ```bash
-# DQN on Modal
+# 在 Modal 上运行 DQN
 uv run modal run src/scripts/modal_run_dqn.py -- -cfg experiments/dqn/mspacman.yaml
 
-# SAC on Modal
+# 在 Modal 上运行 SAC
 uv run modal run src/scripts/modal_run_sac.py -- -cfg experiments/sac/halfcheetah.yaml
 ```
 
-Download results from the persistent volume:
+从持久卷下载实验结果到本地：
 ```bash
 uv run modal volume get hw3-ql-volume exp/
 ```
 
-## Directory Structure
+## 目录结构
 
 ```
 src/
-├── agents/           # DQN and SAC agent implementations
-├── networks/         # Neural network modules (policies, critics)
-├── infrastructure/   # Utilities (replay buffer, logging, etc.)
-├── configs/          # Configuration factories
-└── scripts/          # Training scripts
-experiments/          # YAML configuration files
+├── agents/           # DQN 与 SAC 智能体实现
+├── networks/         # 神经网络模块（策略网络 Policies、评价网络 Critics）
+├── infrastructure/   # 基础设施（经验回放池 Replay Buffer、日志记录等）
+├── configs/          # 配置工厂
+└── scripts/          # 训练启动脚本
+experiments/          # YAML 配置文件目录
 ```

@@ -1,62 +1,61 @@
-# Homework 1: Imitation Learning
+# 作业 1：模仿学习（Imitation Learning）与通用环境指南
 
-## Setup
+## 环境配置
 
-This project uses `uv` for package management. `uv` is a Python package and environment manager from [Astral](https://astral.sh). It replaces tools like
-`pip`, `pipx`, `conda`, and `virtualenv` with a single, simple interface. It is also much faster than prior tools.
+本项目使用 `uv` 进行依赖和虚拟环境管理。`uv` 是由 [Astral](https://astral.sh) 开发的超高速 Python 包管理工具，它通过统一简明的命令行界面替代了 `pip`、`pipx`、`conda` 和 `virtualenv`。
 
-### Installing `uv`
+### 安装 `uv`
 
-Run the following in your terminal:
+在终端中执行以下命令：
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-After installation, open a new terminal so `uv` is on your `PATH`.
+安装完成后，请重新打开终端或重新加载配置，确保 `uv` 已加入系统 `PATH`。
 
-### Always use `uv run`
+### 统一使用 `uv run` 执行命令
 
-Do **not** run `python` or `pip` directly. Always run scripts through `uv run` so dependencies
-and environments are handled automatically. If you want to add a new dependency, you can use `uv add`. This will add the dependency to `pyproject.toml`, update `uv.lock`, and install the package into your virtual environment.
+**请勿直接运行 `python` 或 `pip`**。始终通过 `uv run` 来执行脚本，这样依赖和虚拟环境将被自动隔离和加载。
+如果你想添加新依赖，可以使用 `uv add <package>`，这会自动将其添加到 `pyproject.toml`，更新 `uv.lock` 并安装到虚拟环境中。
 
-Example:
+示例：
 
 ```bash
 uv run src/hw1_imitation/train.py --help
 ```
 
-This should work out of the box with the provided starter code.
+在提供的官方骨架代码下，此命令即可直接运行。
 
-## Weights & Biases (wandb) login
+## Weights & Biases (WandB) 登录配置
 
-These assignments use [Weights & Biases (WandB)](https://wandb.ai) for experiment tracking. WandB is a tool for logging and visualizing machine learning experiments. It is free for academic use. Before running a training script, you will need to log in to WandB using your API key.
+本课程各作业均使用 [Weights & Biases (WandB)](https://wandb.ai) 记录与可视化实验数据（学术用途完全免费）。在启动正式训练脚本前，你需要通过 API 密钥登录 WandB：
 
 ```bash
 uv run wandb login
 ```
 
-Follow the prompt to paste your API key.
+根据终端提示粘贴你的 WandB API Key 即可。
 
-## Using Modal
+## 使用 Modal（云端算力，可选）
 
-**Note that Modal is likely not necessary for this assignment. In testing, training was much faster on a local laptop CPU than on Modal. However, you may need to use Modal in future assignments, so if you want to get set up, here are the instructions:**
+**注意：本次作业及大部分作业在本地 CPU 笔记本上运行通常比在 Modal 上更快。但后续某些大作业可能需要使用 GPU 算力，配置方法如下：**
 
-First, create a Modal account. You should recieve $30 in free credits, which will be plenty for this assignment. Then, you can train on Modal with the following command:
+首先注册 Modal 账户（新用户通常有免费额度）。然后可以通过以下命令在 Modal 上启动训练：
 
 ```bash
 uv run modal run src/hw1_imitation/modal_train.py
 ```
 
-This will build a Modal container and launch training remotely. You can pass the same flags as the local training script. If you are logged into WandB locally, your API key will be automatically forwarded to the Modal container.
+这会自动构建远程容器并在云端启动训练。传参方式与本地脚本完全一致。如果你已经在本地登录了 WandB，你的 API 密钥会自动传递到 Modal 容器中。
 
-Logs and checkpoints will be saved to a Modal volume called `hw1-imitation-volume`. To inspect the logs, you can use:
+训练日志和模型检查点将保存在名为 `hw1-imitation-volume` 的持久化云存储卷（Modal Volume）中。查看日志命令：
 
 ```bash
 uv run modal volume ls hw1-imitation-volume exp
 ```
 
-Then, you can download the logs and checkpoints to your local machine using a command like the following:
+将远程日志和模型下载到本地：
 
 ```bash
 uv run modal volume get hw1-imitation-volume exp/<experiment_name>

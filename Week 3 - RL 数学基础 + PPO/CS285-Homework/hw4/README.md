@@ -1,8 +1,8 @@
-# HW 4: LLM RL
+# CS285 作业 4：大语言模型强化学习（LLM RL）
 
-This repository is set up to run on Modal by default via `scripts/modal_train.py`. The default Modal GPU is an `H100`.
+本仓库默认通过 `scripts/modal_train.py` 配置为在 Modal 云端运行。默认分配的 Modal GPU 为 **NVIDIA H100**。
 
-## Quickstart
+## 快速上手
 
 ```bash
 uv sync
@@ -10,11 +10,11 @@ uv run modal token new
 uvx wandb login
 ```
 
-All training commands below are intended to be run from the repository root.
+以下所有训练命令均假定在仓库根目录下执行。
 
-## Required Runs
+## 必跑实验（Required Runs）
 
-### Format Copy + GRPO
+### 1. Format Copy（格式复刻任务）+ GRPO
 
 ```bash
 uv run modal run --detach scripts/modal_train.py -- \
@@ -44,7 +44,7 @@ uv run modal run --detach scripts/modal_train.py -- \
   --warmup_steps 10
 ```
 
-### Format Copy + REINFORCE
+### 2. Format Copy + REINFORCE
 
 ```bash
 uv run modal run --detach scripts/modal_train.py -- \
@@ -72,7 +72,7 @@ uv run modal run --detach scripts/modal_train.py -- \
   --warmup_steps 10
 ```
 
-### Math Hard + REINFORCE
+### 3. Math Hard（困难数学推理）+ REINFORCE
 
 ```bash
 uv run modal run --detach scripts/modal_train.py -- \
@@ -103,7 +103,7 @@ uv run modal run --detach scripts/modal_train.py -- \
   --save_interval 100
 ```
 
-### Math Hard + GRPO
+### 4. Math Hard + GRPO
 
 ```bash
 uv run modal run --detach scripts/modal_train.py -- \
@@ -136,9 +136,9 @@ uv run modal run --detach scripts/modal_train.py -- \
   --save_interval 100
 ```
 
-## Build the Gradescope Bundle
+## 构建 Gradescope 提交包
 
-Pass `--run_dir` once for each completed run you want to include. You can build and submit a partial bundle before all four required runs are finished; missing runs will simply show up as missing / zero-credit on Gradescope until you add them later.
+为每个想要包含的已完成实验传递一次 `--run_dir`。在四个实验全部跑完之前，也可以构建并提交部分结果；未完成的实验在 Gradescope 上只会显示为缺失/0分，稍后补充即可。
 
 ```bash
 uv run modal run scripts/modal_train.py::bundle_submission_remote -- \
@@ -150,17 +150,19 @@ uv run modal run scripts/modal_train.py::bundle_submission_remote -- \
   --overwrite
 ```
 
+从 Modal 下载打包结果：
+
 ```bash
 uv run modal volume get hw4-llm-rl-volume /submissions/hw4_gradescope_submission.zip .
 ```
 
-## Package for Gradescope
+## 打包并提交到 Gradescope
 
-1. Unzip `hw4_gradescope_submission.zip`.
-2. Put your homework repo folder `hw4/` and the unzipped `hw4_gradescope_submission/` folder side by side in the same parent directory.
-3. Zip those two folders together directly, with no outer wrapper directory.
+1. 解压 `hw4_gradescope_submission.zip`。
+2. 将你的作业代码目录 `hw4/` 和解压后的 `hw4_gradescope_submission/` 文件夹并排放置在同一个父目录下。
+3. 直接将这两个文件夹一起打包为 zip，外层不要嵌套其他包装目录。
 
-The uploaded zip should look like this at the top level:
+顶层目录结构应如下所示：
 
 ```text
 hw4_submission.zip
@@ -170,7 +172,7 @@ hw4_submission.zip
     ...
 ```
 
-If your current working directory is the parent directory containing both folders, one convenient command is:
+如果你的当前工作目录是包含这两个文件夹的父目录，可以执行便捷打包命令：
 
 ```bash
 zip -r hw4_submission.zip hw4 hw4_gradescope_submission \

@@ -1,110 +1,109 @@
-# CS 185/285 LLM RL Default Final Project
+# CS 185/285 LLM RL 默认期末大作业指南
 
-This repository contains the default LLM RL final project codebase.
+本仓库包含 LLM RL（大语言模型强化学习）默认期末大作业代码库。
 
-The project studies RLHF for open-ended instruction following with:
-- base model: `Qwen/Qwen2.5-1.5B-Instruct`
-- benchmark: a curated `5k`-example dataset built from filtered WildChat prompts and LLM-ranked model-generated answers
-- primary metric: GPT-5.4 head-to-head win rate versus the frozen base model
+本项目研究针对开放式指令遵循的 RLHF（人类反馈强化学习），实验配置如下：
+- **基座模型**：`Qwen/Qwen2.5-1.5B-Instruct`
+- **基准数据集**：精选自过滤后的 WildChat 提示词与大模型打分评级的 `5k` 条样本数据集
+- **主要评估指标**：相对冻结基座模型的 GPT-5.4 双盲对抗胜率（Head-to-head Win Rate）
 
-The main Python package is:
+核心 Python 包为：
 - `llm_rl_final_proj`
 
-## Repository Layout
-- `llm_rl_final_proj/`: training, evaluation, and data code
-- `scripts/modal_train.py`: Modal entrypoints for training and evaluation
-- `dataset/`: the RLHF dataset to train on
-- `public_eval/`: the repository evaluation assets used for local evaluation and Gradescope submissions
+## 仓库布局
 
-## Environment
-Initial setup:
+- `llm_rl_final_proj/`：训练、评估与数据加载核心代码
+- `scripts/modal_train.py`：用于训练与评估的 Modal 云端入口脚本
+- `dataset/`：用于训练的 RLHF 本地数据集
+- `public_eval/`：用于本地评估和 Gradescope 评测的公开评估资源
+
+## 环境配置
+
+初始设置：
 
 ```bash
 uv run modal token new
 uvx wandb login
 ```
 
-For local head-to-head LLM evaluation on the repository evaluation files, also export your own OpenAI API key:
+若要在本地对仓库评估集运行大模型对抗胜率评测，还需导出你自己的 OpenAI API 密钥：
 
 ```bash
 export OPENAI_API_KEY=...
 ```
 
-## Benchmark Dataset
-The RLHF dataset is stored locally in:
+## 基准数据集
+
+RLHF 数据集保存在本地：
 - `dataset/wildchat_min4_judged_5k_v1`
 
-Split sizes:
-- `train_prefs = 4744`
-- `test_prefs = 256`
-- `train_gen = 4744`
-- `test_gen = 256`
+划分规模：
+- `train_prefs = 4744`（训练偏好对）
+- `test_prefs = 256`（测试偏好对）
+- `train_gen = 4744`（训练生成 Prompt）
+- `test_gen = 256`（测试生成 Prompt）
 
-Interpretation:
-- `train_prefs`: chosen/rejected preference pairs for offline preference optimization and reward-model training
-- `test_prefs`: held-out preference pairs for reward-model and offline diagnostics
-- `train_gen`: prompt-only split for online RLHF rollouts
-- `test_gen`: held-out prompt-only split for policy-vs-base evaluation
+说明：
+- `train_prefs`：包含 chosen/rejected 偏好对，用于离线偏好优化（如 DPO/IPO）和奖励模型（RM）训练
+- `test_prefs`：留出偏好对，用于奖励模型评估和离线诊断
+- `train_gen`：纯 Prompt 数据切分，用于在线 RLHF 的 Rollout 采样
+- `test_gen`：留出 Prompt 切分，用于策略模型对比基座模型的胜率评估
 
-`train_prefs` and `train_gen` use the same prompt distribution. The difference is that `train_prefs` also includes paired responses and preference labels, while `train_gen` is the prompt source for online rollouts.
+`train_prefs` 和 `train_gen` 使用相同的 Prompt 分布，区别在于前者包含配对回答和偏好标签，后者是在线交互 Rollout 的 Prompt 源。
 
-## Benchmark Rules
-When you run the required Part 1 methods or your Part 2 investigations, keep the benchmark setup fixed:
+## 基准测试规约（Benchmark Rules）
 
-- do not train on additional prompt data or preference data beyond `dataset/wildchat_min4_judged_5k_v1`
-- do not change the base model from `Qwen/Qwen2.5-1.5B-Instruct`
-- keep `max_prompt_tokens = 700`
-- keep the policy generation budget fixed: online rollouts and all submitted policy JSONLs should use `max_new_tokens = 256`
-- keep the response-tokenization budget for preference/reward scoring fixed at `max_response_tokens = 512`; this applies to offline training, reward-model training, reward-model submission scoring, and reward-model scoring during online RLHF
-- when building submission JSONLs, use deterministic decoding: `temperature = 0.0`, `top_p = 1.0`
+无论是运行 Part 1 必做算法还是进行 Part 2 深入探索，都必须固定基准设置：
 
-Part 2 should improve the method itself under this fixed benchmark. Changing evaluation-time token budgets, training on extra data, or sweeping many policy checkpoints is not a substitute for an algorithmic extension.
+- 严禁在 `dataset/wildchat_min4_judged_5k_v1` 之外引入额外训练 Prompt 或偏好数据
+- 严禁更换基座模型，必须固定使用 `Qwen/Qwen2.5-1.5B-Instruct`
+- 固定 `max_prompt_tokens = 700`
+- 固定策略生成预算：在线 Rollout 和所有提交的策略 JSONL 必须使用 `max_new_tokens = 256`
+- 固定偏好/奖励打分的响应 Token 预算：`max_response_tokens = 512`（适用于离线训练、奖励模型训练及在线 RLHF 打分）
+- 生成提交 JSONL 时，必须使用确定性解码：`temperature = 0.0`，`top_p = 1.0`
 
-## Upload Benchmark Assets To Modal
-Before training, create the Modal volume and upload the dataset. If you already created the volume, you can skip the create command.
+Part 2 的核心是在此固定基准下改进算法本身。改动评估 Token 预算、在额外数据上训练或堆叠大量检查点均不算作有效的算法扩展。
+
+## 上传基准资源到 Modal
+
+训练前，请创建 Modal 存储卷并上传数据集（若已创建可跳过创建命令）：
 
 ```bash
 uv run modal volume create llm-rl-final-project-volume
 ```
 
-### Upload the training dataset
+### 上传训练数据集
 ```bash
 uv run modal volume put llm-rl-final-project-volume dataset/wildchat_min4_judged_5k_v1 /synthetic_datasets/
 ```
 
-This makes the dataset available inside Modal at:
+数据集将在 Modal 容器内挂载至：
 - `/vol/synthetic_datasets/wildchat_min4_judged_5k_v1`
 
-Verify:
-
+验证上传：
 ```bash
 uv run modal volume ls llm-rl-final-project-volume /synthetic_datasets
 ```
 
-### Evaluation files
-The evaluation files already live in this repository under:
-- `public_eval/`
+### 评估文件说明
+评估文件已存在于本仓库的 `public_eval/` 目录下。从本仓库启动 Modal 入口时，代码库会自动挂载到容器内的 `/root/project/`，因此无需额外上传 `public_eval/`。
 
-When you run Modal entrypoints from this repo, the repository is mounted inside the container at:
-- `/root/project/`
+## 项目 Part 1 必做算法清单
 
-So you do not need to upload `public_eval/` to your Modal volume. Use paths under:
-- `/root/project/public_eval/`
-
-## Project Part 1 Mandatory Methods
-Offline:
-- `dpo`
-- `ipo`
+**离线算法（Offline）**：
+- `dpo`（直接偏好优化）
+- `ipo`（恒等偏好优化）
 - `aot`
 
-Online:
-- Bradley-Terry reward model
-- `grpo`
+**在线算法（Online）**：
+- Bradley-Terry 奖励模型（Reward Model）
+- `grpo`（分组相对策略优化）
 - `drgrpo`
 - `gspo`
 
-## Typical Training Commands
-### Reward model
+## 典型训练命令
+
+### 1. 奖励模型（Reward Model）训练
 ```bash
 uv run modal run scripts/modal_train.py::reward_model_train_remote -- \
   --model_name Qwen/Qwen2.5-1.5B-Instruct \
@@ -126,7 +125,7 @@ uv run modal run scripts/modal_train.py::reward_model_train_remote -- \
   --wandb_name wildchat_min4_judged_5k_reward_model_v1
 ```
 
-### Offline preference training
+### 2. 离线偏好优化训练（以 DPO 为例）
 ```bash
 uv run modal run scripts/modal_train.py::train_remote -- \
   --algo dpo \
@@ -154,16 +153,12 @@ uv run modal run scripts/modal_train.py::train_remote -- \
   --wandb_name wildchat_min4_judged_5k_dpo_beta01_v1
 ```
 
-For the required offline Part 1 submissions, use the following reference checkpoints after running the corresponding training commands:
+针对必选的离线 Part 1 提交，推荐使用以下参考检查点：
 - DPO: `step_000100`
 - IPO: `step_000300`
 - AOT: `step_000550`
 
-For IPO, use the same command with `--algo ipo`, `--output_dir /vol/runs/wildchat_min4_judged_5k_ipo_v1`, and `--wandb_name wildchat_min4_judged_5k_ipo_v1`.
-
-For AOT, use the same command with `--algo aot`, `--output_dir /vol/runs/wildchat_min4_judged_5k_aot_beta02_v1`, `--wandb_name wildchat_min4_judged_5k_aot_beta02_v1`, `--beta 0.2`, `--generation_eval_every 50`, `--eval_interval 50`, and `--save_interval 50`.
-
-### Online RLHF training
+### 3. 在线 RLHF 训练（以 GRPO 为例）
 ```bash
 uv run modal run scripts/modal_train.py::rm_grpo_train_remote -- \
   --algo grpo \
@@ -197,33 +192,18 @@ uv run modal run scripts/modal_train.py::rm_grpo_train_remote -- \
   --wandb_name wildchat_min4_judged_5k_grpo_rm445_v1
 ```
 
-Use the same online command for `dr_grpo` and `gspo`, changing `--algo`, `--output_dir`, and `--wandb_name`. For Part 1 online policy submissions, use checkpoint `step_000025`.
+对于 `dr_grpo` 和 `gspo`，使用相同命令，仅修改 `--algo`、`--output_dir` 与 `--wandb_name`。Part 1 在线提交推荐使用检查点 `step_000025`。
 
-## W&B Sample Logging
-The codebase already logs model generations to W&B.
+## 构建 Gradescope 提交文件
 
-During offline and online training, you should see:
-- a Markdown sample panel containing recent prompt/response examples
-- a `samples/generation_table` W&B table containing prompt text, reference response, model response, and, for online runs, reward-model score
+共有三类提交要求：
+- Part 1 策略方法：在 `128` 条评测集上生成回答
+- Part 1 奖励模型：为 `256` 对留出偏好打分
+- Part 2 最佳方法：在相同的 `128` 条评测集上生成回答
 
-This is implemented in:
-- `llm_rl_final_proj/train.py`
-- `llm_rl_final_proj/online/train_rm_grpo.py`
-- `llm_rl_final_proj/utils/wandb_utils.py`
+推荐 Part 1 检查点路径映射：
 
-## Gradescope Submission Builders
-Upload JSONL outputs generated by running your trained models on the repository evaluation assets.
-
-There are three submission categories:
-- Part 1 policy methods: generate on the repository `128`-prompt evaluation set
-- Part 1 reward model: score the repository `256` preference-pair set
-- Part 2 best methods: generate on the same repository `128`-prompt evaluation set
-
-The submission builders do not automatically choose checkpoints. Pass the adapter path for the checkpoint you want to submit.
-
-Recommended Part 1 checkpoint paths after running the commands above:
-
-| File | Adapter path |
+| 文件名称 | 适配器检查点路径 |
 | --- | --- |
 | `policy_generations/dpo.jsonl` | `/vol/runs/wildchat_min4_judged_5k_dpo_beta01_v1/checkpoints/step_000100/adapter` |
 | `policy_generations/ipo.jsonl` | `/vol/runs/wildchat_min4_judged_5k_ipo_v1/checkpoints/step_000300/adapter` |
@@ -233,20 +213,7 @@ Recommended Part 1 checkpoint paths after running the commands above:
 | `policy_generations/gspo.jsonl` | `/vol/runs/wildchat_min4_judged_5k_gspo_rm445_v1/checkpoints/step_000025/adapter` |
 | `reward_model/public_test_pref_scores.jsonl` | `/vol/runs/wildchat_min4_judged_5k_reward_model_v1/checkpoints/step_000445/adapter` |
 
-### Part 1 policy submissions (`128` prompts)
-For Part 1, the required policy methods are:
-- `dpo`
-- `ipo`
-- `aot`
-- `grpo`
-- `drgrpo`
-- `gspo`
-
-Each of these should produce a JSONL built on:
-- `/root/project/public_eval/public_test_gen_prompts_128.jsonl`
-
-Example:
-
+### 生成策略提交文件示例（128 Prompt）：
 ```bash
 uv run modal run scripts/modal_train.py::build_policy_submission_remote -- \
   --model_name Qwen/Qwen2.5-1.5B-Instruct \
@@ -259,18 +226,7 @@ uv run modal run scripts/modal_train.py::build_policy_submission_remote -- \
   --top_p 1.0
 ```
 
-Repeat this for each required Part 1 policy method, changing `--adapter_path` and `--output_jsonl` appropriately. Use the same `128`-prompt file for all six Part 1 policy submissions.
-
-### Part 1 reward-model submission
-The reward model you train is also autograded.
-
-You must score the held-out preference pairs in:
-- `/root/project/public_eval/public_test_prefs_256.jsonl`
-
-The autograder computes pair accuracy from the uploaded `chosen_score` and `rejected_score` values.
-
-Command:
-
+### 生成奖励模型打分提交文件示例：
 ```bash
 uv run modal run scripts/modal_train.py::build_reward_model_submission_remote -- \
   --model_name Qwen/Qwen2.5-1.5B-Instruct \
@@ -281,55 +237,16 @@ uv run modal run scripts/modal_train.py::build_reward_model_submission_remote --
   --max_response_tokens 512
 ```
 
-### Part 2 policy submissions (`128` prompts)
-For Part 2, submit:
-- your strongest offline method as `offline_best.jsonl`
-- your strongest online method as `online_best.jsonl`
+## 从 Modal 下载提交产物并打包
 
-Both are built on:
-- `/root/project/public_eval/public_test_gen_prompts_128.jsonl`
-
-Part 2 submissions do not have to come from a single adapter. For example, a valid offline investigation might generate one response per prompt from a small, pre-specified family of meaningfully different policies and then use a reward model to rerank those candidates. If you do this, keep the benchmark prompt files, decoding settings, and token budgets fixed, and describe the candidate family and selector in your report.
-
-Example offline Part 2 submission:
-
-```bash
-uv run modal run scripts/modal_train.py::build_policy_submission_remote -- \
-  --model_name Qwen/Qwen2.5-1.5B-Instruct \
-  --adapter_path /vol/runs/<offline_part2_run>/checkpoints/<step>/adapter \
-  --prompts_jsonl /root/project/public_eval/public_test_gen_prompts_128.jsonl \
-  --output_jsonl /vol/submissions/offline_best.jsonl \
-  --max_prompt_tokens 700 \
-  --max_new_tokens 256 \
-  --temperature 0.0 \
-  --top_p 1.0
-```
-
-Example online Part 2 submission:
-
-```bash
-uv run modal run scripts/modal_train.py::build_policy_submission_remote -- \
-  --model_name Qwen/Qwen2.5-1.5B-Instruct \
-  --adapter_path /vol/runs/<online_part2_run>/checkpoints/<step>/adapter \
-  --prompts_jsonl /root/project/public_eval/public_test_gen_prompts_128.jsonl \
-  --output_jsonl /vol/submissions/online_best.jsonl \
-  --max_prompt_tokens 700 \
-  --max_new_tokens 256 \
-  --temperature 0.0 \
-  --top_p 1.0
-```
-
-## Download Submission Files From Modal
-Create the local submission directory:
-
+本地创建目录：
 ```bash
 mkdir -p llm_rl_final_proj_public_submission/policy_generations
 mkdir -p llm_rl_final_proj_public_submission/reward_model
 mkdir -p llm_rl_final_proj_public_submission/part2
 ```
 
-Download Part 1 policy files:
-
+下载所有产物文件：
 ```bash
 uv run modal volume get llm-rl-final-project-volume /submissions/dpo.jsonl llm_rl_final_proj_public_submission/policy_generations/
 uv run modal volume get llm-rl-final-project-volume /submissions/ipo.jsonl llm_rl_final_proj_public_submission/policy_generations/
@@ -337,64 +254,27 @@ uv run modal volume get llm-rl-final-project-volume /submissions/aot.jsonl llm_r
 uv run modal volume get llm-rl-final-project-volume /submissions/grpo.jsonl llm_rl_final_proj_public_submission/policy_generations/
 uv run modal volume get llm-rl-final-project-volume /submissions/drgrpo.jsonl llm_rl_final_proj_public_submission/policy_generations/
 uv run modal volume get llm-rl-final-project-volume /submissions/gspo.jsonl llm_rl_final_proj_public_submission/policy_generations/
-```
-
-Download the reward-model file:
-
-```bash
 uv run modal volume get llm-rl-final-project-volume /submissions/public_test_pref_scores.jsonl llm_rl_final_proj_public_submission/reward_model/
-```
-
-Download the Part 2 files:
-
-```bash
 uv run modal volume get llm-rl-final-project-volume /submissions/offline_best.jsonl llm_rl_final_proj_public_submission/part2/
 uv run modal volume get llm-rl-final-project-volume /submissions/online_best.jsonl llm_rl_final_proj_public_submission/part2/
 ```
 
-Zip the final submission for Gradescope:
-
+压缩为提交 Zip 包：
 ```bash
 zip -r llm_rl_final_proj_public_submission.zip llm_rl_final_proj_public_submission -x "*.DS_Store"
 ```
 
-## Autograder Files to Submit
-Expected upload directory for the autograder:
+## 本地自动评分器（Local Autograder）
 
-```text
-llm_rl_final_proj_public_submission/
-  policy_generations/
-    dpo.jsonl
-    ipo.jsonl
-    aot.jsonl
-    grpo.jsonl
-    drgrpo.jsonl
-    gspo.jsonl
-  reward_model/
-    public_test_pref_scores.jsonl
-  part2/
-    offline_best.jsonl
-    online_best.jsonl
-```
-
-## Local Autograder
-After you build the JSONL files and download them into `llm_rl_final_proj_public_submission/`, run the local autograder with your own OpenAI API key:
-
+在下载好的 `llm_rl_final_proj_public_submission/` 上执行本地评测：
 ```bash
 uv run python student_autograder/run_local_autograder.py \
   --submission_dir llm_rl_final_proj_public_submission \
   --output_json student_autograder_results.json
 ```
 
-The local autograder uses the same public evaluation files and thresholds as Gradescope.
-
-## Autograder Thresholds
-Gradescope and the local autograder use the same evaluation files and thresholds.
-
-Thresholds you need to beat:
-- reward model pair accuracy: `0.74`
-- Part 1 DPO / IPO / AOT / GRPO / DrGRPO / GSPO: `0.65 / 0.60 / 0.65 / 0.60 / 0.60 / 0.60`
-- Part 2 offline best: `0.82`
-- Part 2 online best: `0.70`
-
-For Part 2, you receive full credit on that portion if you clear either the offline threshold or the online threshold.
+## 满分胜率阈值标准
+- 奖励模型对配对准确率：`0.74`
+- Part 1 算法（DPO / IPO / AOT / GRPO / DrGRPO / GSPO）：`0.65 / 0.60 / 0.65 / 0.60 / 0.60 / 0.60`
+- Part 2 最佳离线方法胜率：`0.82`
+- Part 2 最佳在线方法胜率：`0.70`（Part 2 离线或在线任一达标即可得满分）
